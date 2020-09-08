@@ -5,7 +5,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
 	return (
 		<div>
 			<p className='f3'>
-				{'This magic brain will detect faces.'}
+				{'This magic brain will detect faces. Input the URL for an image of a face to try.'}
 			</p>
 			<div className='center'>
 				<div className='form center pa4 br3 shadow-5'>
@@ -18,8 +18,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
 				</div>
 			</div>
 		</div>
-
-		)
+		);
 }
 
 export default ImageLinkForm;

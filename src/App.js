@@ -1,6 +1,5 @@
 import React from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -13,7 +12,7 @@ import './App.css';
 const particlesOptions = {
   particles: {
     number: {
-      value: 100,
+      value: 30,
       density: {
         enable: true,
         value_area: 800
@@ -38,7 +37,6 @@ const initialState = {
 }
 
 class App extends React.Component {
-  
   constructor() {
     super();
     this.state = initialState;
@@ -51,8 +49,7 @@ class App extends React.Component {
         email: data.email,
         entries: data.entries,
         joined: data.joined 
-    }
-    })
+    }})
   }
 
   calculateFaceLocation = (data) => {
@@ -68,10 +65,7 @@ class App extends React.Component {
     }
   }
 
-
-
   displayFaceBox = (box) => {
-    console.log(box);
     this.setState({box: box})
   }
 
@@ -111,34 +105,6 @@ class App extends React.Component {
   }
 
 
-// onButtonSubmit = () => {
-//     this.setState({imageUrl: this.state.input});
-//     app.models
-//       .predict(
-//         Clarifai.FACE_DETECT_MODEL,
-//         this.state.input)
-//       .then(response => {
-//         if (response) {
-//           fetch('http://localhost:3000/image', {
-//             method: 'put',
-//             headers: {'Content-Type': 'application/json'},
-//             body: JSON.stringify({
-//               id: this.state.user.id
-//             })
-//           })
-//             .then(response => response.json())
-//             .then(count => {
-//               this.setState(Object.assign(this.state.user, { entries: count}))
-//             })
-//             .catch(console.log)
-
-//         }
-//         this.displayFaceBox(this.calculateFaceLocation(response))
-//       })
-//       .catch(err => console.log(err));
-//   }
-
-
   
   onRouteChange = (route) => {
     if (route === 'signout') {
@@ -176,11 +142,10 @@ class App extends React.Component {
                 ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                 : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
             )
-    }
+      }
     </div>
-    )
+    );
   }
-   
 }
 
 export default App;
